@@ -1,0 +1,263 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*,
+*:before,
+**:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: 400;
+}
+/* END CLEAR STYLES */
+
+.title {
+  font-size: 24px;
+}
+.btn {
+  padding: 3px 8px;
+  background: rgb(37 189 90);
+  color: #fff;
+  text-align: center;
+  min-width: 80px;
+  border-radius: 5px;
+}
+/* END START STYLES */
+
+.wrap {
+  display: grid;
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 2fr 10fr;
+  grid-template-areas: "header header"
+    "main main"; 
+  grid-gap: 10px;
+  padding: 10px 15px;
+}
+
+.header {
+  grid-area: header;
+  background-color: rgb(66 82 66);
+  padding: 5px 20px;
+  border-radius: 11px;
+}
+.header__logo-img {
+  height: 100%;
+}
+/* END HEADER */
+
+.main {
+  grid-area: main;
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+  grid-template-areas: "navbar main-content";
+  grid-gap: 20px;
+  /* padding: 0 18px; */
+}
+/* END MAIN */
+
+.navbar {
+  grid-area: navbar;
+  background-color: rgb(28 218 95);
+  padding: 20px;
+  border-radius: 11px;
+}
+.navbar .navbar__li {
+  height: 30px;
+}
+.navbar .navbar__link {
+  display: block;
+  font-size: 1.2rem;
+  color: #fff;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  height: 100%;
+  width: 100%;
+}
+.navbar ul {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.navbar .navbar__li_down a {
+  color: #000;
+}
+/* END NAVBAR */
+
+.content {
+  grid-area: main-content;
+}
+.content__banner {
+  background: url("https://lucyjordanoff.com.au/wp-content/uploads/Web-Design-Banner_Lucy_Jordanoff.jpg") 
+  center center / cover no-repeat;
+  width: 100%;
+  height: 200px;
+  border-radius: 11px 11px 0 0;
+}
+.content__container {
+  padding: 15px 0;
+}
+/* END CONTENT PROFILE */
+
+.ava {
+  display: flex;
+  margin-bottom: 50px;
+}
+.ava__container-img {
+  width: 100px;
+  height: 100px;
+  margin-right: 50px;
+}
+.ava__img {
+  width: 100%;
+  border-radius: 50%;
+}
+.ava__info {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.ava span {
+  font-weight: 700;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+}
+.ava__user-info {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.ava__user-info div {
+  margin-bottom: 5px;
+}
+.ava__name {
+  background: #0f1317;
+    padding: 2px 8px;
+    border-radius: 10px;
+    color: #fff;
+}
+/* END AVA */
+.posts {
+  max-width: 60%;
+}
+.posts_write {
+  margin-bottom: 15px;
+}
+.posts .title {
+  margin-bottom: 15px;
+}
+.posts__form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.posts__input {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  border-radius: 11px;
+  border: 2px solid #425242;
+  margin-bottom: 15px;
+}
+
+/* PLACEHOLDER */
+::-webkit-input-placeholder {
+  position: absolute; top: 50%; 
+  transform: translateY(-50%);
+  margin-left: 15px;
+}
+:-ms-input-placeholder      {
+  position: absolute; top: 50%; 
+  transform: translateY(-50%);
+  margin-left: 15px;
+}
+/* END PLACEHOLDER */
+
+.posts__item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 30px;
+  border-bottom: 1px solid gray;
+  padding-bottom: 10px;
+}
+.posts__item-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+/* END POSTS */
