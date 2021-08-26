@@ -1,0 +1,32 @@
+.title {
+  font-size: 24px;
+}
+.btn {
+  padding: 3px 8px;
+  background: rgb(37 189 90);
+  color: #fff;
+  text-align: center;
+  min-width: 80px;
+  border-radius: 5px;
+}
+/* END START STYLES */
+
+.wrap {
+  display: grid;
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 2fr 10fr;
+  grid-template-areas: "header header"
+    "main main"; 
+  grid-gap: 10px;
+  padding: 10px 15px;
+}
+
+.main {
+  grid-area: main;
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+  grid-template-areas: "navbar main-content";
+  grid-gap: 20px;
+  /* padding: 0 18px; */
+}
+/* END MAIN */

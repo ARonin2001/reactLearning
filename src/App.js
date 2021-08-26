@@ -1,14 +1,16 @@
 import logo from './logo.svg';
-import './App.css';
-import Header from './components/header';
-import Navbar from './components/Navbar';
-import Profile from './components/Profile';
+import './components/Reset.css';
+// import './App.css';
+import appClass from './App.module.css';
+import Header from './components/Header/Header';
+import Navbar from './components/Navbar/Navbar';
+import Profile from './components/Profile/Profile';
 
 const App = () => {
   return (
-    <div className="wrap">
+    <div className={appClass.wrap}>
       <Header />
-      <div className="main">
+      <div className={appClass.main}>
         <Navbar />
         <Profile />
       </div>

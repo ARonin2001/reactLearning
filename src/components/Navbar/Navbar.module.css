@@ -1,0 +1,29 @@
+.navbar {
+  grid-area: navbar;
+  background-color: rgb(28 218 95);
+  padding: 20px;
+  border-radius: 11px;
+  height: max-content;
+}
+.navbar .navbar__li {
+  height: 30px;
+}
+.navbar .navbar__link {
+  display: block;
+  font-size: 1.2rem;
+  color: #fff;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+.navbar__li:nth-child(4) {
+  margin-bottom: 40px;
+}
+.navbar .navbar__li_down a {
+  color: #000;
+}
+/* END NAVBAR */
+.item {
+  color: #fff;
+}
