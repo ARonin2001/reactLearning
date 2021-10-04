@@ -1,0 +1,132 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    column-gap: 10px;
+}
+
+.dialogs_items .active{
+    background-color: gray;
+    box-shadow: 2px 3px 5px 0 rgba(0, 0, 0, 0.3);
+    color: #fff;
+}
+
+.dialogs_item {
+    display: flex;
+    height: 50px;
+    border: 1px solid #edeef0;
+    border-radius: 10px;
+    padding: 5px 5px 5px 10px;
+    box-sizing: border-box;
+    margin-bottom: 4px;
+    transition: all .2s;
+}
+.dialogs_item:hover {
+    background-color: gray;
+    transform: scale(1.05);
+    box-shadow: 2px 3px 5px 0 rgba(0, 0, 0, 0.3);
+}
+.dialogs_item:hover .name {
+    color: #fff;
+}
+
+.dialogs_item_img {
+    margin-right: 15px;
+}
+.dialogs_item_img img {
+    width: 40px;
+    border-radius: 50%;
+}
+/* END DIALOG_ITEM */
+
+.messages {
+    background-color: #edeef0;
+    padding: 10px 10px;
+}
+
+.title {
+    margin-bottom: 10px;
+    font-size: 1.3em;
+}
+hr {
+    border: 1px solid #fff;
+    margin-bottom: 10px;
+}
+
+.message {
+    display: flex;
+    /* align-items: center; */
+    margin-bottom: 10px;
+    flex-direction: column;
+    min-height: 400px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.message_ava {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.message_ava img {
+    width: 30px;
+    border-radius: 50%;
+    margin-bottom: 5px;
+}
+
+.text {
+    padding: 7px;
+    /* border: 3px solid #425242; */
+    border: 3px solid;
+    border-radius: 10px;
+    background: #fff;
+    color: #000;
+}
+
+.message_left {
+    padding-right: 20px;
+    justify-content: flex-start;
+}
+
+.message_left, .message_right {
+    display: flex;
+    margin: 5px 0;
+}
+
+.message_left .message_ava {
+    margin-right: 15px;
+}
+
+.message_left .text {
+    border-color: #425242;
+}
+/* END message_left */
+
+.message_right .message_ava {
+    margin-left: 15px;
+}
+.message_right {
+    padding-left: 20px;
+    justify-content: flex-end;
+
+}
+
+.message_right .text {
+    border-color: #1cda5f;
+}
+/* END message_right */
+
+.form_container {
+    width: 95%;
+}
+.user_text {
+    width: 100%;
+    height: 4rem;
+    background-color: #fff;
+    padding: 5px 0 0 15px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    box-shadow: 1px 2px 5px 0 rgba(0, 0, 0, 0.3);
+}
+/* END TEXTAREA */

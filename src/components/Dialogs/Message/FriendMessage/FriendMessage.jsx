@@ -1,0 +1,21 @@
+import dialogsStyle from '../../Dialogs.module.css';
+
+let FriendMessage = (props) => {
+    return(
+        <div className={dialogsStyle.message_left}>
+            <div className={dialogsStyle.message_ava}>
+                <div className={dialogsStyle.message_img}>
+                    <img src="https://i1.wp.com/andrey-eltsov.ru/wp-content/uploads/2018/02/Gt-Ji9kjFG-jh_jfut7-fjuthD4h_jhTuiH-jh_5tgD-jgu-Смайлики-Дискорд6.png"/>
+                </div>
+                <span className={dialogsStyle.name}>{props.name}</span>
+            </div>
+
+            <div className={dialogsStyle.text}>
+                {props.text}
+            </div>
+        </div>
+    );
+}
+
+export default FriendMessage;
+

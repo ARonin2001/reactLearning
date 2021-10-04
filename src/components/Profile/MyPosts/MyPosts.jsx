@@ -1,33 +1,45 @@
 import myPosts from './MyPosts.module.css';
-import appClass from '../../../App.module.css';
 import Post from './Post/Post';
+import React from 'react';
+import { addPostActionCreator, updateTextAreaActionCreator } from '../../../redux/state';
 
-const MyPost = () => {
+const MyPost = (props) => {
+    let postsElements = props.posts.map(el => <Post message={el.message} like={el.likeCount} /> );
+
+    let newPostElement = React.createRef(); // создаём ссылку
+
+    let updateTextArea = () => {
+        let text = newPostElement.current.value;
+
+        let action = updateTextAreaActionCreator(text);
+        props.dispatch(action);
+    }
+
+    let addPost = () => {
+        props.dispatch(addPostActionCreator());
+        props.dispatch(updateTextAreaActionCreator(''));
+    }
+
+    console.log(props.newPostText);
+
     return(
         <div className={myPosts.posts}>
             <div className={myPosts.posts_write}>
-                <h3 className={appClass.title}>My posts</h3>
+                <h3 className={"title" + ' ' + myPosts.title}>My posts</h3>
 
-                <form id="form" className={myPosts.posts__form} method="post">
-                    <input type="text" className={myPosts.posts__input} placeholder="your news..." />
-                    <button type="submit" className={appClass.btn}>Send</button>
+                <form id="form" className={myPosts.posts__form}>
+                    <textarea name="text" ref={newPostElement} className={myPosts.posts__input} placeholder="your news..." onChange={ updateTextArea } 
+                    value={props.newPostText}/>
+                    <button type="button" className="btn" onClick={ addPost }>Send</button>
                 </form>
             </div>
             <div className={myPosts.posts__items}>
-                {/* <div className={myPosts.posts__item}>
-                    <img src="https://yt3.ggpht.com/a/AATXAJzAHhyPZnJbtmEHrBQtnofAowi0xNFx8Dm3Y-BMSg=s900-c-k-c0xffffffff-no-rj-mo" className={myPosts.posts__img} />
-                    <div className="posts__description">React</div>
-                </div> */}
-                <Post/>
-                <Post/>
-                <Post/>
-                <Post/>
-                <Post/>
-                <Post/>
-                
+                { 
+                    postsElements
+                }
             </div>
         </div>
     );
 }
-
+   
 export default MyPost;

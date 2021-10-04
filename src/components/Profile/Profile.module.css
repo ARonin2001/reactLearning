@@ -1,7 +1,3 @@
-.content {
-  grid-area: main-content;
-}
-
 .banner {
   background: url("https://lucyjordanoff.com.au/wp-content/uploads/Web-Design-Banner_Lucy_Jordanoff.jpg") center center / cover no-repeat;
   width: 100%;
@@ -14,48 +10,3 @@
 }
 
 /* END CONTENT PROFILE */
-
-.ava {
-  display: flex;
-  margin-bottom: 50px;
-}
-
-.ava__container_img {
-  width: 100px;
-  height: 100px;
-  margin-right: 50px;
-}
-
-.ava__img {
-  width: 100%;
-  border-radius: 50%;
-}
-
-.ava__info {
-  margin-top: 5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.ava span {
-  font-weight: 700;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-}
-
-.ava__user_info {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.ava__user_info div {
-  margin-bottom: 5px;
-}
-
-.name {
-  background: #0f1317;
-  padding: 2px 8px;
-  border-radius: 10px;
-  color: #fff;
-}
-
-/* END AVA */

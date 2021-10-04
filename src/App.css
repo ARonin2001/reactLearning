@@ -19,6 +19,8 @@
     "main main"; 
   grid-gap: 10px;
   padding: 10px 15px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .main {
@@ -28,5 +30,8 @@
   grid-template-areas: "navbar main-content";
   grid-gap: 20px;
   /* padding: 0 18px; */
+}
+.app__content {
+  grid-area: main-content;
 }
 /* END MAIN */

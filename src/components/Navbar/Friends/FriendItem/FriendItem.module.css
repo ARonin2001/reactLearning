@@ -1,0 +1,21 @@
+.item {
+    width: 50px;
+    height: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 10px 5px 0;
+}
+
+.img img {
+    width: 40px;
+    border-radius: 50%;
+}
+
+.name {
+    color: #fff;
+    overflow: hidden;
+    white-space: nowrap; /* запрет на перенос строки. Имитация тега <pre> */
+    text-overflow: ellipsis; /* ставит многоточие в конце слова, если оно слишком длинно */
+}

@@ -4,9 +4,13 @@
   padding: 20px;
   border-radius: 11px;
   height: max-content;
+  max-width: 200px;
 }
 .navbar .navbar__li {
   height: 30px;
+}
+.navbar .navbar__li a:hover {
+  color: #000;
 }
 .navbar .navbar__link {
   display: block;
@@ -26,4 +30,7 @@
 /* END NAVBAR */
 .item {
   color: #fff;
+}
+.link_active {
+  color: #000 !important;
 }
