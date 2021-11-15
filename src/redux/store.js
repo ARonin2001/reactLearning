@@ -1,8 +1,6 @@
-// Action Type
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_TEXTAREA_TEXT = 'UPDATE-NEW-TEXTAREA-TEXT';
-const ADD_MESSAGE = 'SEND-MESSAGE';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-MESSAGE-TEXT';
+import dialogsReducer from "./dialogsReducer";
+import navbarReducer from "./navbarReducer";
+import profileReducer from "./profileReducer";
 
 let store = {
     _state: {
@@ -63,54 +61,13 @@ let store = {
     },
     
     dispatch(action) {
-        if(action.type === ADD_POST) {
-            let newPost = {
-                id: 7,
-                message: this._state.profilePage.newPostText,
-                likeCount: 0
-            };
-            
-            this._state.profilePage.posts.push(newPost);
-            this._rerender(this._state);
-        } else if(action.type === UPDATE_NEW_TEXTAREA_TEXT) {
-            this._state.profilePage.newPostText = action.newText;
-            this._rerender(this._state);
-        } else if(action.type === UPDATE_NEW_MESSAGE_TEXT) {
-            this._state.dialogsPage.newMessage = action.newMessage;
-            this._rerender(this._state);
-        } else if (action.type === ADD_MESSAGE) {
-            let newMessage = {
-                name: "Dmitry",
-                message: this._state.dialogsPage.newMessage
-            };
-            this._state.dialogsPage.myMessages.push(newMessage);
-            this._rerender(this._state);
-        }
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.navbar = navbarReducer(this._state.navbar, action);
+
+        this._rerender(this._state);
     }
     
-}
-
-// Action Creator
-export const addPostActionCreator = () => ( {type: ADD_POST} );
-
-export const updateTextAreaActionCreator = (text) => 
-    ({
-        type: UPDATE_NEW_TEXTAREA_TEXT, 
-        newText: text
-    });
-
-export const updateMessageAreaActionCreator = (message) => (
-    {
-        type: UPDATE_NEW_MESSAGE_TEXT,
-        newMessage: message
-    }
-)
-
-export const addMessageActionCreator = () => (
-    {
-        type: ADD_MESSAGE
-    }
-)
-    
+}   
 
 export default store;

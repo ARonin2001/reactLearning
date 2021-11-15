@@ -1,9 +1,7 @@
-import { NavLink } from 'react-router-dom';
 import friendsClass from './Friends.module.css';
 import FriendItem from './FriendItem/FriendItem';
 
-const Friends = (props) => {
-
+const Friends = (props) => {    
     let items = props.state.friends.map( el => <FriendItem name={el.name} /> );
 
     return (

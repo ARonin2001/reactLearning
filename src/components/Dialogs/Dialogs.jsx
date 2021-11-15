@@ -2,25 +2,21 @@ import dialogsStyle from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
 import React from 'react';
-import { updateMessageAreaActionCreator, addMessageActionCreator } from '../../redux/state';
 
 const Dialogs = (props) => {
-
-    let dialogsElements = props.state.dialogs.map(el => <DialogItem name={el.name} id={el.id}/>);
-    let messagesElements = props.state.myMessages.map( el => <Message name={el.name} 
+    let dialogsElements = props.dialogs.map(el => <DialogItem name={el.name} id={el.id}/>);
+    let messagesElements = props.myMessages.map( el => <Message name={el.name} 
         text={el.message} />);
 
     let messageElement = React.createRef();
 
-    let updateTextArea = () => {
+    let onUpdateTextArea = () => {
         let message = messageElement.current.value;
-        let action = updateMessageAreaActionCreator(message);
-        props.dispatch(action);
+        props.updateTextArea(message);
     }
 
-    let sendMessage = () => {
-        props.dispatch(addMessageActionCreator());
-        props.dispatch(updateMessageAreaActionCreator(''));
+    let onSendMessage = () => {
+        props.sendMessage();
     }
 
     return(
@@ -42,13 +38,15 @@ const Dialogs = (props) => {
                 <hr />
                 <div className={dialogsStyle.form_container}>
                     <form id={dialogsStyle.message_form} className={dialogsStyle.message_form}>
-                        <textarea name="text" ref={messageElement} className={dialogsStyle.user_text} placeholder="Введите сообщение" onChange={updateTextArea} value={props.state.newMessage}></textarea>
-                        <button type="button" className="btn" onClick={ sendMessage }>ОТПРАВИТЬ</button>
+                        <textarea name="text" ref={messageElement} 
+                            className={dialogsStyle.user_text} 
+                            placeholder="Введите сообщение" onChange={onUpdateTextArea} 
+                            value={props.newMessage}></textarea>
+
+                        <button type="button" className="btn" onClick={ onSendMessage }>ОТПРАВИТЬ</button>
                     </form>
                 </div>
             </div>
-
-            
         </div>
     )
 }
