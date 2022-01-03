@@ -19,8 +19,6 @@ const Message = (props) => {
                             </div>
                         </div> */}
 
-            <FriendMessage name={props.name} text={props.text} />
-
             {/* <div className={dialogsStyle.message_right}>
                 <div className={dialogsStyle.text}>
                     {props.text}

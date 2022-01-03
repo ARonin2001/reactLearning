@@ -7,23 +7,17 @@ import { connect } from 'react-redux';
 let mapStateToProps = (state) => {
     return {
         posts: state.profilePage.posts,
-        newPostText: state.profilePage.newPostText
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        updateTextArea: (text) => {
-            let action = updateTextAreaActionCreator(text);
-            dispatch(action);
-        },
-        addPost: () => {
-            dispatch(addPostActionCreator());
-            dispatch(updateTextAreaActionCreator('')); 
-        }
-    }
-}
+// let mapDispatchToProps = (dispatch) => {
+//     return {
+//         addPost: (newPostText) => {
+//             dispatch(addPostActionCreator(newPostText));
+//         }
+//     }
+// }
 
-const MyPostContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
+const MyPostContainer = connect(mapStateToProps, {addPostActionCreator})(MyPosts);
 
 export default MyPostContainer;

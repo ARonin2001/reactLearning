@@ -2,21 +2,40 @@ import dialogsStyle from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
 import React from 'react';
+import { Field, reduxForm } from 'redux-form';
+import {withValidationElement} from '../Hoc/withValidationElement';
+import {required, maxLength} from '../utilits/Validations/validation';
+
+const Textarea = withValidationElement("textarea");
+const maxLength200 = maxLength(10);
+
+const DialogsForm = props => {
+
+    return (
+        <form onSubmit={props.handleSubmit} id={dialogsStyle.message_form} className={dialogsStyle.message_form}>
+
+            <Field className={dialogsStyle.user_text}
+                name="dialogText" 
+                component={Textarea}
+                validate={[required, maxLength200]} 
+                placeholder="Введите сообщение" />
+
+            <button className="btn">ОТПРАВИТЬ</button>
+        </form>
+    )
+}
+
+const ReduxDialogsForm = reduxForm({
+    form: 'dialogsForm'
+})(DialogsForm);
 
 const Dialogs = (props) => {
     let dialogsElements = props.dialogs.map(el => <DialogItem name={el.name} id={el.id}/>);
-    let messagesElements = props.myMessages.map( el => <Message name={el.name} 
+    let messagesElements = props.messages.map( el => <Message name={el.name} 
         text={el.message} />);
 
-    let messageElement = React.createRef();
-
-    let onUpdateTextArea = () => {
-        let message = messageElement.current.value;
-        props.updateTextArea(message);
-    }
-
-    let onSendMessage = () => {
-        props.sendMessage();
+    let onSendMessage = data => {
+        props.sendMessage(data.dialogText);
     }
 
     return(
@@ -37,14 +56,7 @@ const Dialogs = (props) => {
                 </div>
                 <hr />
                 <div className={dialogsStyle.form_container}>
-                    <form id={dialogsStyle.message_form} className={dialogsStyle.message_form}>
-                        <textarea name="text" ref={messageElement} 
-                            className={dialogsStyle.user_text} 
-                            placeholder="Введите сообщение" onChange={onUpdateTextArea} 
-                            value={props.newMessage}></textarea>
-
-                        <button type="button" className="btn" onClick={ onSendMessage }>ОТПРАВИТЬ</button>
-                    </form>
+                    <ReduxDialogsForm onSubmit={onSendMessage} />
                 </div>
             </div>
         </div>

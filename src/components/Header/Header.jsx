@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import styles from './Header.module.css';
+import { Redirect } from 'react-router-dom';
 
 const Header = (props) => {
     return (
@@ -9,7 +10,7 @@ const Header = (props) => {
             </a>
 
             <div className={styles.login}>
-                { props.isAuth ? props.login 
+                { props.isAuth ? <div>{props.login} <button onClick={props.logout}>Logout</button></div>   
                 : <NavLink to={'/login'}>Login</NavLink> }
                 
             </div>

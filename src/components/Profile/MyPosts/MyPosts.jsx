@@ -1,19 +1,35 @@
 import myPosts from './MyPosts.module.css';
 import Post from './Post/Post';
 import React from 'react';
+import { Field, reduxForm } from 'redux-form';
+import { maxLength, required } from '../../utilits/Validations/validation';
+import { withValidationElement } from '../../Hoc/withValidationElement';
 
-const MyPost = (props) => {
+const Textarea = withValidationElement("textarea");
+const maxLength200 = maxLength(200);
+
+const MyPostForm = props => {
+    return (
+        <form id="form" className={myPosts.posts__form} onSubmit={props.handleSubmit}>
+            <Field name="newPostText" 
+               className={myPosts.posts__input} 
+               placeholder="your news..." 
+               component={Textarea}
+               validate={[required, maxLength200]} />
+
+            <button className="btn">Send</button>
+        </form>
+    )
+}
+
+const ReduxMyPostForm = reduxForm({form: 'postForm'})(MyPostForm);
+
+const MyPost = React.memo((props) => {
+    console.log("Render");
     let postsElements = props.posts.map(el => <Post message={el.message} like={el.likeCount} /> );
 
-    let newPostElement = React.createRef(); // создаём ссылку
-
-    let OnUpdateTextArea = () => {      
-        let text = newPostElement.current.value;
-        props.updateTextArea(text);
-    }
-
-    let onAddPost = () => {
-        props.addPost();
+    let onAddPost = (data) => {
+        props.addPostActionCreator(data.newPostText);
     }
 
     return(
@@ -21,11 +37,7 @@ const MyPost = (props) => {
             <div className={myPosts.posts_write}>
                 <h3 className={"title" + ' ' + myPosts.title}>My posts</h3>
 
-                <form id="form" className={myPosts.posts__form}>
-                    <textarea name="text" ref={newPostElement} className={myPosts.posts__input} placeholder="your news..." onChange={ OnUpdateTextArea } 
-                    value={props.newPostText}/>
-                    <button type="button" className="btn" onClick={ onAddPost }>Send</button>
-                </form>
+                <ReduxMyPostForm onSubmit={onAddPost} />
             </div>
             <div className={myPosts.posts__items}>
                 { 
@@ -34,6 +46,6 @@ const MyPost = (props) => {
             </div>
         </div>
     );
-}
+})
    
 export default MyPost;
