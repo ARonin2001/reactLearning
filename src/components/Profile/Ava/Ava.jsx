@@ -1,5 +1,7 @@
 import Preloader from '../../common/preloader/preloader';
 import ava from './Ava.module.css';
+// import AvaStatus from './AvaStatus';
+import AvaStatusWithHuck from './AvaStatusWithHuck';
 
 const Ava = (props) => {
     if (!props.profile) {
@@ -16,6 +18,10 @@ const Ava = (props) => {
                 <div className={ava.ava__user_info}>
                     <div className={ava.age}>Age: <span>25</span></div>
                     <div className={ava.city}>From: <span>Japan</span></div>
+
+                    <AvaStatusWithHuck status={props.status} 
+                        updateUserStatus={props.updateUserStatus} />
+                        
                     <div className={ava.description}>{props.profile.aboutMe}</div>
                     <ul className={ava.contacts}>
                         <li>
