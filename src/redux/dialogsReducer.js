@@ -9,37 +9,24 @@ let initialState = {
         {id: 4, name: "Eminem"},
         {id: 5, name: "Jon"},
     ],
-    myMessages: [
+    messages: [
         {name: "Dmitry", message: "Lorem ipsum dolor sit amet consectetur adipisicing elit."},
         {name: "Dmitry", message: "Yes, I do"},
         {name: "Dmitry", message: "Haha"},
-        
     ],
-    firendMessages: [
-        {name: "Genry", message: "What's up dog. How do you doing?" },
-        {name: "Harry", message:"Lorem ipsum dolor sit amet consectetur adipisicing elit. " },
-        {name: "Eminem", message: "Lorem ipsum dolor sit amet consectetur, adipisicing elit." },
-        {name: "Jon", message: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, nobis incidunt laborum facilis nihil laudantium. Itaque odit similique exercitationem quasi." },
-    ],
-    newMessage: ''
 };
 
 const dialogsReducer = (state = initialState, action) => {
     switch(action.type) {
-        case UPDATE_NEW_MESSAGE_TEXT: {
-            let stateCopy = {...state};
-            stateCopy.newMessage = action.newMessage;
-            return stateCopy;
-        }
         case ADD_MESSAGE: {
             let newMessage = {
                 name: "Dmitry",
-                message: state.newMessage
+                message: action.newMessage
             };
             
             let stateCopy = {...state};
-            stateCopy.myMessages = [...state.myMessages];
-            stateCopy.myMessages.push(newMessage);
+            stateCopy.messages = [...state.messages];
+            stateCopy.messages.push(newMessage);
 
             return stateCopy;
         }
@@ -48,16 +35,10 @@ const dialogsReducer = (state = initialState, action) => {
     }
 }
 
-export const updateMessageAreaActionCreator = (message) => (
+export const addMessageActionCreator = newMessage => (
     {
-        type: UPDATE_NEW_MESSAGE_TEXT,
-        newMessage: message
-    }
-)
-
-export const addMessageActionCreator = () => (
-    {
-        type: ADD_MESSAGE
+        type: ADD_MESSAGE,
+        newMessage
     }
 )
 
